@@ -1,0 +1,49 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+// for compass/css2/border-radius
+$default-border-radius: 9px;
+
+$mainColor: #67a;
+
+$base:           #a88;
+$complement:     adjust-hue($base, 180);
+$complementDark: darken($complement, 5%);
+$lighten1:       lighten($base, 15%);
+$lighten2:       lighten($base, 30%);
+
+$stripeWidth: 12px;
+
+@import "compass/reset";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "_stripes.scss";
+
+
+.clear { clear: both; }
+
+.bg-main { background-color: $mainColor; }
+
+.shadow {
+    @include single-box-shadow();
+}
+
+.box {
+    height:80px; 
+    width: 80px; 
+    float: left; 
+    margin: 15px; 
+    @include border-radius(); 
+    @extend .shadow;
+}
+
+.box-round { @extend .box; @include border-radius(20px); }
+
+.stripes-base            { @include background-diagonal-stripes(45deg, $base, darken($base, 25%), $stripeWidth); }
+.stripes-complement      { @include background-diagonal-stripes(45deg, $complement, darken($complement, 25%), $stripeWidth);}
+.stripes-complement-dark { @include background-diagonal-stripes(45deg, $complementDark, darken($complementDark, 25%), $stripeWidth);}
+.stripes-lighten1        { @include background-diagonal-stripes(45deg, $lighten1, darken($lighten1, 25%), $stripeWidth);}
+.stripes-lighten2        { @include background-diagonal-stripes(45deg, $lighten2, darken($lighten2, 25%), $stripeWidth);}
+
